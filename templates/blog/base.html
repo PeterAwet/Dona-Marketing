@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<title>Dona Marketing Site</title>
+	{% include 'blog/head.html' %}
+</head>
+<body>
+	
+	{% include 'blog/nav.html' %}
+
+	{% include 'blog/header.html' %}
+
+	{% if messages %}
+    <div>
+      <!---strong>Messages:</strong--->
+      <ul>
+        {% for message in messages %}
+        <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+			<li>{{message}}</li>
+			<button type="close" class="close" data-dismiss="alert" aria-label="close">
+			<span aria-hidden="true">&times;</span>
+				
+			</button>
+		</div>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+
+    {% block content %}{% endblock content %}
+
+    {% include 'blog/footer.html' %}
+    {% include 'blog/scripts.html' %}
+</body>
+</html>
+
+<style type="text/css">
+	body{
+		background-color: #f4f4f4;
+	}
+	.alert{
+      font-size: 20px;
+      text-align: center;
+	}
+</style>

@@ -1,0 +1,35 @@
+{% extends 'blog/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %} Update Post {% endblock title %}
+{% block content %}
+<br>
+<div class="container">
+	<h4 class="title-u">Update Post</h4>
+	<div class="row justify-content-center">
+	<form action="." method="POST" enctype="multipart/form-data">
+	  <div class="form-group">
+	   {% csrf_token %}
+	   {{form.media}}
+	   {{form|crispy}}
+
+	  <button type="submit" class="btn btn-primary btn-block"><h5>Update</h5></button>
+	</form>
+	</div>
+</div>
+<br>
+<style type="text/css">
+	
+	.title-u{
+		background-color: grey;
+		max-width: 90%;
+		margin-left: 45px;
+		color: #fff;
+		padding: 5px;
+		text-align: center;
+	}
+</style>
+
+
+{% endblock content %}

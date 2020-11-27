@@ -1,0 +1,46 @@
+{% extends 'blog/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %} Delete Post {% endblock title %}
+{% block content %}
+<br>
+<div class="container">
+	<div class="row-d">
+		<div class="col-5 offset-4">
+			<h4 class="del">Delete:{{post.title}}!</h4>
+			<hr>
+			<br>
+			<form class="form-d" action="." method="POST" enctype="multipart/form-data">
+				{% csrf_token %}
+
+			<strong><h5 class="warning">Are you sure, you want to delete it?</h5></strong>
+				<!--input type="submit"class="btn btn-outline-info-danger" name="Delete"-->
+				<br>
+				<hr>
+				<br>
+			    <button class="btn btn-danger btn-block"><h5>Delete</h5></button>
+			</form>
+		</div>
+	</div>
+</div>
+<br>
+
+<style type="text/css">
+	.warning{
+		color: green;
+		text-align: center;
+	}
+	.row-d{
+		background-color: #fff;
+		padding: 10px;
+		/*--border-radius: 5px;--*/
+		/*--box-shadow: 0px 0px 10px 0px #000;--*/
+	}
+	.del{
+		background-color: grey;
+		padding: 3px;
+		text-align: center;
+		color: #fff;
+	}
+</style>
+{% endblock content %}

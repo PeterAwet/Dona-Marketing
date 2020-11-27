@@ -1,0 +1,160 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<!--? Blog Area Start -->
+<section class="home-blog-area section-padding30">
+    <div class="container">
+        <!-- Section Tittle -->
+        <div class="row justify-content-center">
+            <div class="col-lg-7 col-md-9 col-sm-10">
+                <div class="section-tittle text-center mb-100">
+                    <h2>Our Latest Reviews 2020</h2>
+                    <p>Discover The most recent Products </p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            {% for post in object_list %}
+            <div class="col-lg-4 col-md-6">
+                <div class="home-blog-single mb-40">
+            
+                   {% for cat in post.categories.all %}
+                    <a href="{{post.category.get_absolute_url}}"><h4 class="text-muted">{{cat}}</h4></a>
+                   
+                   {% endfor %}
+                    <div class="blog-img-cap">
+                        <div class="blog-img">
+                            <img src="{{post.image.url}}" alt="">
+                        </div>
+                        <p class="post-meta text-muted">Posted:
+                            on {{ post.created|date:"M d, Y" }}</p>
+                        <div class="blog-cap">
+                            <h3><a href="{% url 'blog:article-detail' post.pk %}">{{post.title}}</a></h3>
+                            <P>{{post.overview}}.</P>
+                        </div>
+                        <a href="{% url 'blog:article-detail' post.pk %}" class="btn" data-animation="fadeInLeft" data-delay=".3s">Read More...</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% if is_paginated %}
+    <nav class="blog-pagination justify-content-center d-flex">
+    <ul class="pagination">
+      {% if page_obj.has_previous %}
+        <li class="page-item">
+            <a href="?page={{page_obj.previous_page_number}}" class="page-link" aria-label="Previous">
+                <i class="ti-angle-left"></i>
+            </a>
+        </li>
+        {% endif %}
+        <li class="page-item active">
+            <a href="?page={{page_obj.number}}" class="page-link">{{page_obj.number}}</a>
+        </li>
+         {% if page_obj.has_next %}
+        <li class="page-item">
+            <a href="?page={{page_obj.next_page_number}}" class="page-link" aria-label="Next">
+                <i class="ti-angle-right"></i>
+            </a>
+        </li>
+        {% endif %}
+    </ul>
+  </nav>
+  {% endif %}
+
+   <!--div class="Subscribe">
+    <a href="{% url 'blog:newsletter' %}" class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
+  type="submit">Subscribe Newsletter </a>
+  </div-->
+</section>
+
+
+<!--{if queryset.has_previous }-->
+<!--nav class="blog-pagination justify-content-center d-flex">
+    <ul class="pagination">
+      {% if page_obj.has_previous %}
+        <li class="page-item">
+            <a href="?{{page_request_var}}={{queryset.previous_page_number}}" class="page-link" aria-label="Previous">
+                <i class="ti-angle-left"></i>
+            </a>
+        </li>
+        {% endif %}
+        <li class="page-item">
+            <a href="#" class="page-link">1</a>
+        </li>
+        <li class="page-item active">
+            <a href="?{{page_request_var}}={{queryset.number}}" class="page-link">{{queryset.number}}</a>
+        </li>
+        {% if queryset.has_next %}
+        <li class="page-item">
+            <a href="?{{page_request_var}}={{queryset.next_page_number}}" class="page-link" aria-label="Next">
+                <i class="ti-angle-right"></i>
+            </a>
+        </li>
+        {% endif %}
+    </ul>
+</nav-->
+<!--{ endif }-->
+
+  
+  <!--Pagination-->
+<!-- Blog Area End -->
+<!--? About Law Start-->
+<!--section class="about-low-area mt-30">
+    <div class="container">
+        <div class="about-cap-wrapper">
+            <div class="row">
+                <div class="col-xl-5  col-lg-6 col-md-10 offset-xl-1">
+                    <div class="about-caption mb-50">
+                        <!-- Section Tittle ->
+                        <div class="section-tittle mb-35">
+                            <h2>100% satisfaction guaranteed.</h2>
+                        </div>
+                        <p>Almost before we knew it, we had left the ground</p>
+                        <a href="about.html" class="border-btn">Make an Appointment</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <!-- about-img ->
+                    <div class="about-img">
+                        <div class="about-font-img">
+                            <img src="{% static 'assets/img/gallery/about2.png' %}" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section-->
+<!-- About Law End-->
+
+<style type="text/css">
+  .section-tittle{
+    margin-top: -60;
+  }
+  .row{
+    margin-top: -10px;
+  }
+  .home-blog-single{
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 8px;
+
+  }
+  .blog-img{
+    width: 270px;
+    border-radius: 1px ! important;
+  }
+  .post-meta{
+    text-align: center;
+    font-size: 12px;
+    font-family: 'coutgete';
+  }
+
+</style>
+
+{% endblock content %}
