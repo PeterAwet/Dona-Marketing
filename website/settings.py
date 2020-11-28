@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 import os
 import psycopg2
 import dj_database_url
+import django_heroku
 
 DATABASE_URL = os.environ['DATABASE_URL']
 
@@ -195,3 +196,5 @@ CKEDITOR_CONFIGS = {
 }
 
 CKEDITOR_UPLOAD_PATH = 'ckeditor/'
+
+django_heroku.settings(locals())
