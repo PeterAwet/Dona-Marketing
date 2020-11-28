@@ -118,17 +118,25 @@ DATABASES = {
 
 }
 '''
+import psycopg2
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.path.join(BASE_DIR, 'marketing'),
-        'USER': 'postgres',
-        'PASSWORD': 'peter123',
-        'HOST': 'localhost',
-        'PORT': '5432'
-    }
-}
+conn = psycopg2.connect(
+     host ='ec2-54-205-248-255.compute-1.amazonaws.com',
+     database ='de2a6c1jbgd47q',
+     user ='sendcrnqcjoboz',
+     password ='b74e7350e0cd0e99deff80bbad27ea7e4cbb470c1c64f5317b200cda0bf6e17a',
+     port ='5432'
+    )
+#print("connected to postgreSQL DB")
+conn.close()
+
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#
+#    }
+#}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
