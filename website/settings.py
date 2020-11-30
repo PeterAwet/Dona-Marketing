@@ -30,7 +30,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'o_6dyu1#(l*qg!(^7r-s18o8r&!rf5jw5y9vtw4^u7fph*x6_4'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['dona-digital-marketing.herokuapp.com','127.0.0.1']
 
@@ -103,7 +103,7 @@ AUTHENTICATION_BACKENDS = [
 
 WSGI_APPLICATION = 'website.wsgi.application'
 
-DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+#DATABASES=['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 '''
@@ -119,26 +119,29 @@ DATABASES = {
 
 }
 '''
-import psycopg2
+#import psycopg2
 
-conn = psycopg2.connect(
-     host ='ec2-54-205-248-255.compute-1.amazonaws.com',
-     database ='de2a6c1jbgd47q',
-     user ='sendcrnqcjoboz',
-     password ='b74e7350e0cd0e99deff80bbad27ea7e4cbb470c1c64f5317b200cda0bf6e17a',
-     port ='5432'
-    )
+#conn = psycopg2.connect(
+#     host ='ec2-54-205-248-255.compute-1.amazonaws.com',
+#     database ='de2a6c1jbgd47q',
+#     user ='sendcrnqcjoboz',
+#     password ='b74e7350e0cd0e99deff80bbad27ea7e4cbb470c1c64f5317b200cda0bf6e17a',
+#     port ='5432'
+#    )
 #print("connected to postgreSQL DB")
-conn.close()
+#conn.close()
 
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#
-#    }
-#}
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 
+    }
+}
+#DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+
+db_from_env = dj_database_url.config(conn_max_age=600)
+DATABASES['default'].update(db_from_env)
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 
