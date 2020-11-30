@@ -1,0 +1,33 @@
+	/*
+  	Flaticon icon font: Flaticon
+  	Creation date: 13/05/2020 06:02
+  	*/
+
+@font-face {
+  font-family: "Flaticon";
+  src: url("../fonts/Flaticon.6c6065a1e4fa.eot");
+  src: url("../fonts/Flaticon.6c6065a1e4fa.eot?#iefix") format("embedded-opentype"),
+       url("../fonts/Flaticon.d8dc75466d00.woff2") format("woff2"),
+       url("../fonts/Flaticon.c01bc4b3125e.woff") format("woff"),
+       url("../fonts/Flaticon.f83e16096b35.ttf") format("truetype"),
+       url("../fonts/Flaticon.6040b297be6c.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url("../fonts/Flaticon.6040b297be6c.svg#Flaticon") format("svg");
+  }
+}
+
+[class^="flaticon-"]:before, [class*=" flaticon-"]:before,
+[class^="flaticon-"]:after, [class*=" flaticon-"]:after {   
+  font-family: Flaticon;
+font-style: normal;
+}
+
+.flaticon-healthcare-and-medical:before { content: "\f100"; }
+.flaticon-fitness:before { content: "\f101"; }
+.flaticon-clock:before { content: "\f102"; }
