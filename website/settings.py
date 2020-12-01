@@ -143,14 +143,6 @@ DATABASES = {
 
     }
 }
-#S3 BUCKETS CONFIG
-AWS_ACCESS_KEY_ID ='AKIAXRD5BYG7BRHDXP6I'
-AWS_SECRET_ACCESS_KEY = '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'
-AWS_STORAGE_BUCKET_NAME = 'dona-marketing-files'
-AWS_S3_FILE_OVERWRITE = False
-AWS_DEFAULT_ACL = None
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 #DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
 
